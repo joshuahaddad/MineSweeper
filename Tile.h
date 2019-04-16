@@ -16,5 +16,6 @@ public:
     Tile(bool bomb);
     void SetTileMines(Tile& currentTile);
     bool CheckMine();
+    void SetMine();
 
 };

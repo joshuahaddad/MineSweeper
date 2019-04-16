@@ -122,12 +122,13 @@ int main()
             }
             if(row < 16 && left_click && !game.GetLoss()){
                 Interactable* clicked_tile = game.game_interactables_.at(row).at(column);
-                if(clicked_tile->CheckForMine()){
+
+                if(clicked_tile->CheckForMine() && !clicked_tile->IsFlagged()){
                     game.SetLoss();
                     game_status.SetTexture(game.GetTexture("face_lose"));
                     if(!game.IsRevealed())
                         game.RevealMines();
-                } else {
+                } else if (!clicked_tile->IsFlagged()) {
                     clicked_tile->SetReveal(true);
                     if(clicked_tile->GetMineCount() == 0){
                         clicked_tile->RecursiveReveal(*game.GetCurrentBoard()->GetNumberMinesPtr());

@@ -18,4 +18,8 @@ bool Tile::CheckMine() {
     return is_mine_;
 }
 
+void Tile::SetMine() {
+    is_mine_ = true;
+}
+
 

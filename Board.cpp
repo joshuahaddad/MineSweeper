@@ -85,21 +85,22 @@ Board::Board() {
 }
 
 void Board::RandomBoard() {
+    number_of_mines_ = 50;
+
     for(int i = 0; i < height_; i++){
         vector<Tile> tile_lines;
-
         for(int j = 0; j < length_; j++){
-            int number = rand() % 10;
-            if(number == 1 && number_of_mines_ < 50){
-                number_of_mines_++;
-                Tile current_tile = Tile(true);
-                tile_lines.push_back(current_tile);
-            } else {
-                Tile current_tile = Tile(false);
-                tile_lines.push_back(current_tile);
-            }
+            Tile current_tile = Tile(false);
+            tile_lines.push_back(current_tile);
         }
         board_tiles_.push_back(tile_lines);
+    }
+
+    for(int i = 0; i < 50; i++){
+        int x = rand() % 16;
+        int y = rand() % 25;
+
+        board_tiles_.at(x).at(y).SetMine();
     }
 }
 
