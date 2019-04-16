@@ -22,7 +22,7 @@ void GameObject::LoadTextures() {
         texture.loadFromFile(paths);
         texture.setSmooth(true);
 
-        long begin =paths.find("s/")+2;
+        long begin = paths.find("s/")+2;
         long end = paths.find(".png",2);
 
         string name = paths.substr(begin, end-begin);
@@ -56,6 +56,7 @@ void GameObject::GenerateBoard(Interactable &game_status) {
     game_status.SetTexture(GetTexture("face_happy"));
     lose_ = false;
     win_ = false;
+    board_revealed_ = false;
 
     game_interactables_.clear();
     for(int i = 0; i < current_board_.GetHeight(); i ++){
